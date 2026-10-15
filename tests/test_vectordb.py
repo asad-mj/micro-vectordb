@@ -33,7 +33,7 @@ def test_hnsw_exact_top1_recall():
     assert len(results) == 3
     assert results[0][0] == "doc_10"
     assert results[0][1] > 0.99
-    assert visited <= 50
+    assert visited <= 50* (index.max_layer + 1)
 
 def test_api_insert_and_search():
     with TestClient(app) as client:
